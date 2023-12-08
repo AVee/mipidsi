@@ -1,6 +1,6 @@
 use display_interface::WriteOnlyDataCommand;
 use embedded_graphics_core::pixelcolor::{Rgb565, Rgb666};
-use embedded_hal::{delay::DelayNs, digital::OutputPin};
+use embedded_hal::{delay::DelayUs, digital::OutputPin};
 
 use crate::{
     dcs::{BitsPerPixel, Dcs, PixelFormat, SetAddressMode, SoftReset},
@@ -27,7 +27,7 @@ impl Model for ILI9342CRgb565 {
     ) -> Result<SetAddressMode, InitError<RST::Error>>
     where
         RST: OutputPin,
-        DELAY: DelayNs,
+        DELAY: DelayUs,
         DI: WriteOnlyDataCommand,
     {
         match rst {
@@ -64,7 +64,7 @@ impl Model for ILI9342CRgb666 {
     ) -> Result<SetAddressMode, InitError<RST::Error>>
     where
         RST: OutputPin,
-        DELAY: DelayNs,
+        DELAY: DelayUs,
         DI: WriteOnlyDataCommand,
     {
         match rst {

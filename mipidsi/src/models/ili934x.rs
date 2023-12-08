@@ -1,6 +1,6 @@
 use display_interface::{DataFormat, WriteOnlyDataCommand};
 use embedded_graphics_core::pixelcolor::{IntoStorage, Rgb565, Rgb666, RgbColor};
-use embedded_hal::delay::DelayNs;
+use embedded_hal::delay::DelayUs;
 
 use crate::{
     dcs::{
@@ -18,7 +18,7 @@ pub fn init_common<DELAY, DI>(
     pixel_format: PixelFormat,
 ) -> Result<SetAddressMode, Error>
 where
-    DELAY: DelayNs,
+    DELAY: DelayUs,
     DI: WriteOnlyDataCommand,
 {
     let madctl = SetAddressMode::from(options);
